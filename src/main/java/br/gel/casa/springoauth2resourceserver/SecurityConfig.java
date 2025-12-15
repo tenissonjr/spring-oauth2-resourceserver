@@ -8,19 +8,15 @@ import org.springframework.security.web.SecurityFilterChain;
 
 @Configuration
 @EnableWebSecurity
-class SecurityConfig {
+public class SecurityConfig {
 
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
-        http.csrf(csrf -> csrf.disable())
-            .authorizeHttpRequests(auth -> auth
+        http.authorizeHttpRequests(auth -> auth
                 .requestMatchers("/cnpj/**").permitAll()
-                .anyRequest().authenticated());
-            
+                .anyRequest().authenticated())
+            .oauth2ResourceServer(oauth2 -> oauth2.jwt(jwt -> {})); // Provide an empty Customizer for JWT configuration
 
         return http.build();
     }
-
-
-
 }

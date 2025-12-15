@@ -14,9 +14,9 @@ import org.springframework.web.bind.annotation.RestController;
 public class CpfController {
 
     @GetMapping("/{cpf}")
-    public String getCpf(@PathVariable String cpf, @AuthenticationPrincipal Jwt   jwt) {
+    public String consultarCpf(@PathVariable String cpf, @AuthenticationPrincipal Jwt   jwt) {
         return  """
-                Acesso ao recurso protegido realizado com sucesso!
+                Consulta ao CPF realizada com sucesso!
                 Data/Hora : %s
                 CPF: %s
                 Token recebido : 
