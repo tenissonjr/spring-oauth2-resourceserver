@@ -19,8 +19,11 @@ public class CpfController {
                 Consulta ao CPF realizada com sucesso!
                 Data/Hora : %s
                 CPF: %s
+                clientId : %s
                 Token recebido : 
                 %s
-                """.formatted(LocalDateTime.now().toString(), cpf, jwt.getTokenValue());
+                """.formatted(LocalDateTime.now().toString(), cpf
+                , jwt.getClaim("clientId")
+                , jwt.getTokenValue());
     }
 }
